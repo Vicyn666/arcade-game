@@ -5,11 +5,11 @@ var Enemy = function (x, y, speed) {
     this.speed = speed;
     this.sprite = 'images/enemy-bug.png'; };
 
-/*rendering enemies*/
+/*render method of enemy class*/
                 Enemy.prototype.render = function () {
                         ctx.drawImage(Resources.get(this.sprite), this.x, this.y); };
 
-/*enemies location reset and speed amend*/
+/*update and reset methods of enemy class*/
                 Enemy.prototype.update = function (dt) {
                         if ((this.x += this.speed * dt) > 505) {
                                 this.reset(-100, this.y, (Math.random() * 180 + 10));
@@ -37,7 +37,7 @@ var Player = function (x, y) {
                 Player.prototype.render = function () {
                         ctx.drawImage(Resources.get(this.sprite), this.x, this.y); };
 
-/*check victory and defeat, update scores and reset player*/
+/*player class update method (incl reset and win)*/
                 Player.prototype.update = function () {
                 var i, ex, ey;
         var px = player.x;
@@ -60,7 +60,7 @@ var Player = function (x, y) {
                         }
     };
 
-/*player movements*/
+/*player class method movements*/
                 Player.prototype.handleInput = function(key) {
                           if (key === 'up' && this.y >= 68) {
                                   this.y -= 83;
@@ -72,7 +72,7 @@ var Player = function (x, y) {
                                   this.x += 100;
                           }
                   }
-/*player reset*/
+/*player class reset method*/
                 Player.prototype.reset = function () {
                 this.x = 200;
                 this.y = 400;
